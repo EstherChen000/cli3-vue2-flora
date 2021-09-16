@@ -1,0 +1,15 @@
+// 頁腳置底
+//其餘父元素需設置 height:100%;
+.flex-body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.flex-content {
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: auto;
+}
+.flex-footer {
+  flex-shrink: 0;
+}

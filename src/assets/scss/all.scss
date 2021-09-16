@@ -1,0 +1,9 @@
+@import "~bootstrap/scss/functions"; 
+@import "./helpers/_variables"; 
+@import "~bootstrap/scss/bootstrap";
+
+@import "./helpers/_carousel"; 
+@import "./_effect.scss";
+@import "./_sticky-footer.scss";
+@import "./_typography.scss";
+@import "./helpers/_swiper-custom.scss";

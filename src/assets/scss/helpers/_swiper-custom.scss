@@ -1,0 +1,8 @@
+//套件主題色同標準色
+:root {
+  --swiper-theme-color: #{$secondary};
+}
+//分頁元件
+.swiper-pagination-bullet {
+  margin: 5px;
+}
