@@ -148,7 +148,7 @@ export default {
   },
   methods: {
     getCart() {
-      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart`;
+      const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/cart`;
       const vm = this;
       vm.isLoading = true;
       vm.$http.get(api).then((response) => {
@@ -157,7 +157,7 @@ export default {
       });
     },
     creatOrder() {
-      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/order`;
+      const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/order`;
       const vm = this;
       const order = vm.form;
       vm.isLoading = true;

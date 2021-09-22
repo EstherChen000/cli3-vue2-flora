@@ -25,7 +25,8 @@
             </h5>
             <div class="card-body p-3">
               <div
-                style="height: 100px; width: 75px; background-size: contain; background-repeat: no-repeat; background-position: left top"
+                style="height: 100px; width: 75px; background-size: contain;
+                background-repeat: no-repeat; background-position: left top"
                 :style="{ backgroundImage: `url(${item.imageUrl})` }"
                 class="float-left"
               ></div>
@@ -176,7 +177,11 @@ export default {
       localStorage.removeItem('cartList');
       localStorage.setItem('cartList', JSON.stringify(vm.cartStorage));
       vm.isLoading = false;
-      keep.length === 0 ? vm.isCart = false : true;
+      if (keep.length === 0) {
+        vm.isCart = false;
+      } else {
+        vm.isCart = true;
+      }
       vm.cart.forEach((item) => {
         sum += item.price * item.qty;
       });
@@ -212,7 +217,7 @@ export default {
     },
     storageToCart() {
       const vm = this;
-      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/products/all`;
+      const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/products/all`;
       let cache = [];
       vm.$http.get(api).then((response) => {
         cache = response.data.products;
@@ -243,7 +248,7 @@ export default {
           vm.cart.forEach((item) => {
             vm.cartStorage.forEach((e) => {
               if (item.id === e.product_id) {
-                item.qty = e.qty;
+                item.qty = e.qty; // eslint-disable-line no-param-reassign
               }
             });
             sum += item.price * item.qty;
@@ -254,8 +259,8 @@ export default {
       });
     },
     addCartAPIandCoupon() {
-      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart`;
-      const apiCoupon = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/coupon`;
+      const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/cart`;
+      const apiCoupon = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/coupon`;
       const vm = this;
       let cart = {};
       const coupon = {
@@ -267,11 +272,11 @@ export default {
           product_id: item.product_id,
           qty: item.qty,
         };
-        vm.$http.post(api, { data: cart }).then((response) => {
+        vm.$http.post(api, { data: cart }).then(() => {
           vm.$bus.$emit('message:push', '已加入購物車', 'success');
         });
       });
-      vm.$http.post(apiCoupon, { data: coupon }).then((response) => {
+      vm.$http.post(apiCoupon, { data: coupon }).then(() => {
         vm.isLoading = false;
         localStorage.removeItem('cartList');
         vm.$router.push('/cart/cart_checkout');

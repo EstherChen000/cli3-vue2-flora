@@ -63,6 +63,33 @@ const routes = [
       },
     ],
   },
+  {
+    path: '/cart',
+    name: 'Cart',
+    component: () => import('../views/front/Cart.vue'),
+    children: [
+      {
+        path: 'cart_order',
+        name: 'CartOrder',
+        component: () => import('../views/front/pages/CartOrder.vue'),
+      },
+      {
+        path: 'cart_checkout',
+        name: 'CartCheckout',
+        component: () => import('../views/front/pages/CartCheckout.vue'),
+      },
+      {
+        path: 'cart_confirmation/:orderId',
+        name: 'CartConfirmation',
+        component: () => import('../views/front/pages/CartConfirmation.vue'),
+      },
+      {
+        path: 'cart_final',
+        name: 'CartFinal',
+        component: () => import('../views/front/pages/CartFinal.vue'),
+      },
+    ],
+  },
 ];
 
 const router = new VueRouter({

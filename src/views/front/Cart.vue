@@ -7,7 +7,8 @@
     </nav>
     <div class="container-fluid px-0">
       <div
-        class="my-5 row flex-column justify-content-center align-items-center bg-light pt-5 w-100 mx-0 px-0"
+        class="my-5 row flex-column justify-content-center
+        align-items-center bg-light pt-5 w-100 mx-0 px-0"
       >
         <div class="col-md-6 col-sm-12 position-relative">
           <div class="checkout-breadcrumb m-auto">
