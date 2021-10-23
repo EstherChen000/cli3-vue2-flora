@@ -137,6 +137,7 @@
 </template>
 
 <script>
+/* eslint-env jquery */
 export default {
   props: {
     config: Object,
@@ -174,12 +175,13 @@ export default {
         const dateAndTime = new Date(vm.tempCoupon.due_date * 1000)
           .toISOString()
           .split('T');
-        vm.due_date = dateAndTime[0];
+        const [dueDate] = dateAndTime[0];
+        vm.due_date = dueDate;
       }
     },
     getCoupons() {
       const vm = this;
-      const url = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/coupons`;
+      const url = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/coupons`;
       vm.$http.get(url, vm.tempProduct).then((response) => {
         vm.coupons = response.data.coupons;
       });
@@ -187,15 +189,15 @@ export default {
     updateCoupon() {
       const vm = this;
       if (vm.isNew) {
-        const url = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/coupon`;
-        vm.$http.post(url, { data: vm.tempCoupon }).then((response) => {
+        const url = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/coupon`;
+        vm.$http.post(url, { data: vm.tempCoupon }).then(() => {
           $('#couponModal').modal('hide');
           vm.getCoupons();
         });
       } else {
-        const url = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/coupon/${vm.tempCoupon.id}`;
+        const url = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/coupon/${vm.tempCoupon.id}`;
         vm.due_date = new Date(vm.tempCoupon.due_date * 1000);
-        vm.$http.put(url, { data: vm.tempCoupon }).then((response) => {
+        vm.$http.put(url, { data: vm.tempCoupon }).then(() => {
           $('#couponModal').modal('hide');
           vm.getCoupons();
         });

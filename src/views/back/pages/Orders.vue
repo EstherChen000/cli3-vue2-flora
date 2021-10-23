@@ -45,7 +45,7 @@
   </div>
 </template>
 <script>
-import Pagination from '@/components/Pagination';
+import Pagination from '@/components/Pagination.vue';
 
 export default {
   components: {
@@ -62,7 +62,7 @@ export default {
   methods: {
     getOrders(currentPage = 1) {
       // ES6參數預設值
-      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/orders?page=${currentPage}`;
+      const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/orders?page=${currentPage}`;
       const vm = this;
       vm.isLoading = true;
       vm.$http.get(api, vm.tempProduct).then((response) => {

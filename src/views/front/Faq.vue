@@ -79,8 +79,9 @@
   </div>
 </template>
 <script>
-import Navbar from './Navbar';
-import Footer from './Footer';
+/* eslint-env jquery */
+import Navbar from './Navbar.vue';
+import Footer from './Footer.vue';
 
 export default {
   components: {
@@ -137,7 +138,7 @@ export default {
       const vm = this;
       vm.whichIs = Q;
     },
-    toggleCollapse(item, index) {
+    toggleCollapse(item) {
       $(`#${item.id}`).collapse('toggle');
     },
   },
@@ -159,6 +160,7 @@ export default {
       } if (vm.whichIs === '所有問題') {
         return vm.items;
       }
+      return false;
     },
   },
 };

@@ -4,7 +4,6 @@
       <div class="flex-content">
         <Navbar></Navbar>
         <Alert></Alert>
-        <!-- <Carousel></Carousel> -->
         <div class="row border-bottom">
           <h2 class="text-center my-5 mx-auto text-dark">優惠券</h2>
         </div>
@@ -71,15 +70,13 @@
 
 <script>
 import Clipboard from 'clipboard';
-import Navbar from './Navbar';
-import Carousel from './Carousel';
-import Footer from './Footer';
-import Alert from '../AlertMessage';
+import Navbar from './Navbar.vue';
+import Footer from './Footer.vue';
+import Alert from '@/components/AlertMessage.vue';
 
 export default {
   components: {
     Navbar,
-    Carousel,
     Footer,
     Alert,
   },

@@ -144,7 +144,7 @@ export default {
   },
   methods: {
     signin() {
-      const api = `${process.env.APIPATH}/admin/signin`;
+      const api = 'https://vue-course-api.hexschool.io/admin/signin';
       const vm = this;
       vm.$http.post(api, vm.user).then((response) => {
         if (response.data.success) {

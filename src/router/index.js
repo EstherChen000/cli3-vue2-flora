@@ -90,6 +90,41 @@ const routes = [
       },
     ],
   },
+  {
+    path: '/couponnews',
+    name: 'CouponNews',
+    component: () => import('../views/front/CouponNews.vue'),
+  },
+  {
+    path: '/faq',
+    name: 'FAQ',
+    component: () => import('../views/front/Faq.vue'),
+  },
+  {
+    path: '/admin',
+    name: 'Dashboard',
+    component: () => import('../views/back/Dashboard.vue'),
+    children: [
+      {
+        path: 'products',
+        name: 'Products',
+        component: () => import('../views/back/pages/Products.vue'),
+        meta: { requiresAuth: true },
+      },
+      {
+        path: 'coupons',
+        name: 'Coupons',
+        component: () => import('../views/back/pages/Coupons.vue'),
+        meta: { requiresAuth: true },
+      },
+      {
+        path: 'orders',
+        name: 'Orders',
+        component: () => import('../views/back/pages/Orders.vue'),
+        meta: { requiresAuth: true },
+      },
+    ],
+  },
 ];
 
 const router = new VueRouter({

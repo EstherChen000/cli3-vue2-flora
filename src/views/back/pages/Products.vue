@@ -299,7 +299,8 @@
 </template>
 
 <script>
-import Pagination from '@/components/Pagination';
+/* eslint-env jquery */
+import Pagination from '@/components/Pagination.vue';
 
 export default {
   components: {
@@ -321,7 +322,7 @@ export default {
   methods: {
     getProducts(page = 1) {
       // ES6參數預設值
-      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/products?page=${page}`;
+      const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/products?page=${page}`;
       const vm = this;
       vm.isLoading = true;
       vm.$http.get(api).then((response) => {
@@ -345,11 +346,11 @@ export default {
       }
     },
     updateProduct() {
-      let api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/product`;
+      let api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/product`;
       let httpMethod = 'post';
       const vm = this;
       if (vm.isNew === 'edit') {
-        api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/product/${vm.tempProduct.id}`;
+        api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/product/${vm.tempProduct.id}`;
         httpMethod = 'put';
       }
       vm.$http[httpMethod](api, { data: vm.tempProduct }).then((response) => {
@@ -364,7 +365,7 @@ export default {
     },
     deleteProduct() {
       const vm = this;
-      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/product/${vm.tempProduct.id}`;
+      const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/product/${vm.tempProduct.id}`;
       vm.$http.delete(api, { data: vm.tempProduct }).then((response) => {
         if (response.data.success) {
           $('#delProductModal').modal('hide');
@@ -382,7 +383,7 @@ export default {
       const formData = new FormData();
       // 將欄位新增進formData
       formData.append('file-to-upload', uploadedFile);
-      const url = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/upload`;
+      const url = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/upload`;
       vm.status.fileUploading = true; // 更改上傳的圖示
       vm.$http
         .post(url, formData, {
@@ -414,6 +415,7 @@ export default {
       } if (vm.selected === 'wedding') {
         return vm.products.filter((item) => item.category === '捧花');
       }
+      return false;
     },
   },
   created() {

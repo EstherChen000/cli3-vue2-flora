@@ -15,9 +15,9 @@
   </div>
 </template>
 <script>
-import Sidebar from './Sidebar';
-import Navbar from './Navbar';
-import AlertMessage from '../AlertMessage';
+import Sidebar from './Sidebar.vue';
+import Navbar from './Navbar.vue';
+import AlertMessage from '@/components/AlertMessage.vue';
 
 export default {
   components: {
