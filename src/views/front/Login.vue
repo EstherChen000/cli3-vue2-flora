@@ -146,10 +146,12 @@ export default {
     signin() {
       const api = 'https://vue-course-api.hexschool.io/admin/signin';
       const vm = this;
+      let token;
+      let expired;
       vm.$http.post(api, vm.user).then((response) => {
         if (response.data.success) {
-          const { token } = response.data.token;
-          const { expired } = response.data.expired;
+          token = response.data.token;
+          expired = response.data.expired;
           document.cookie = `hexToken=${token}; expires=${new Date(expired)}`;
           vm.$router.push('/admin/products');
         }
