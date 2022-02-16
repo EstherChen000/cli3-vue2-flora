@@ -285,6 +285,7 @@ export default {
     productQty(act, id) {
       const vm = this;
       const cList = [];
+      let sum = 0;
       if (act === 'add') {
         vm.cart.forEach((e, key) => {
           if (e.id === id) {
@@ -315,6 +316,11 @@ export default {
       vm.cartStorage = cList;
       localStorage.removeItem('cartList');
       localStorage.setItem('cartList', JSON.stringify(vm.cartStorage));
+      vm.cart.forEach((item) => {
+        sum += item.price * item.qty;
+      });
+      vm.total = sum;
+      vm.finalTotal = sum * vm.discount;
     },
   },
   computed: {
