@@ -1,17 +1,48 @@
 <!DOCTYPE html>
-<html lang="">
+<html lang="zh-Hant-TW" class="h-100">
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <title><%= htmlWebpackPlugin.options.title %></title>
+    <title>vue-flora</title>
+    <link rel="shortcut icon" type="image/x-icon" href="static/flora.ico">
+    <meta name="description" content="Flora是位於新竹的人氣花店，販賣各種捧花、花束及家居擺飾花卉。">
+    <meta name="keywords" content="新竹, 花店, 花束">
+
+    <!-- Facebook OG:Tag --> 
+    <meta property="og:title" content="Flora" >
+    <meta property="og:url" content="Flora.com">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://imgur.com/jd3VnVG">
+    <meta property="og:description" content="Flora是位於新竹的人氣花店，販賣各種捧花、花束及家居擺飾花卉。" >
+
+    <!-- Twitter Card data --> 
+    <meta name="twitter:card" content="https://imgur.com/jd3VnVG"> 
+    <meta name="twitter:site" content="@Flora"> 
+    <meta name="twitter:title" content="Flora"> 
+    <meta name="twitter:description" content="Flora是位於新竹的人氣花店，販賣各種捧花、花束及家居擺飾花卉。"> 
+    <meta name="twitter:creator" content="@Flora"> 
+    <meta name="twitter:image:src" content="https://imgur.com/jd3VnVG">
+
+    <!-- IE兼容 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- 圖示 -->
+    <script src="https://kit.fontawesome.com/cb4f9fc49b.js" crossorigin="anonymous"></script>
+    
+    <!-- 字型 -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,200;0,400;1,800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200;400;600;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
   </head>
-  <body>
-    <noscript>
-      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
-    </noscript>
+  <body class="h-100">
     <div id="app"></div>
     <!-- built files will be auto injected -->
   </body>
 </html>
+
+<style>
+  .h-100{
+    height: 100%;
+  }
+</style>
